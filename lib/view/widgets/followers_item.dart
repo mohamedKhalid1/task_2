@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 
 class FollowersItem extends StatelessWidget {
   const FollowersItem({
-    super.key, required this.numberOfFollowers, required this.nameFollowers,
+    super.key,
+    required this.numberOfFollowers,
+    required this.nameFollowers,
   });
-final String numberOfFollowers;
-final String nameFollowers;
+  final String numberOfFollowers;
+  final String nameFollowers;
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment:
-      CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           numberOfFollowers,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         Text(
           nameFollowers,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_2/constants.dart';
 
 import '../widgets/create_post_button.dart';
 import '../widgets/facebook_item.dart';
@@ -28,10 +29,9 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80), // here the desired height
-        child: AppBar(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
           title: const Text(
             "Home",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -39,33 +39,40 @@ class _ProfileScreenState extends State<ProfileScreen>
           centerTitle: true,
           leading: Image.asset("assets/images/cyber_royal_logo.png"),
           actions: const [Icon(Icons.notifications_none)],
-          bottom: TabBar(
-            unselectedLabelColor: Colors.black45,
-            indicatorColor: Colors.black,
-            controller: tabController,
-            tabs: const [
-              Tab(
-                text: 'Manage',
-              ),
-              Tab(
-                text: 'Explore',
-              ),
-            ],
-          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              Expanded(
-                child: TabBarView(
-                  controller: tabController,
-                  children: [
-                    Column(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: TabBar(
+                indicatorColor: Colors.black,
+                labelColor: Colors.black,
+                unselectedLabelStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+                indicatorWeight: 2,
+                controller: tabController,
+                tabs: const [
+                  Tab(
+                    child: Text("Manage", style: TextStyle(fontSize: 16)),
+                  ),
+                  Tab(
+                    text: 'Explore',
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: tabController,
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
                       children: [
                         Stack(
+                          clipBehavior: Clip.none,
                           children: [
                             Image.asset("assets/images/cyber_royal_cover.png",
                                 width: double.infinity),
@@ -94,56 +101,73 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 ),
                               ),
                             ),
-                            const ProfilePictureItem(
-                              iconData: Icons.facebook_outlined,
+                            Positioned(
+                              bottom: -30,
+                              left: 100,
+                              child: const ProfilePictureItem(
+                                iconData: Icons.facebook_outlined,
+                              ),
                             ),
-                            const ProfilePictureItem(
-                              iconData: Icons.facebook_outlined,
+                            Positioned(
+                              bottom: -30,
+                              left: 10,
+                              child: const ProfilePictureItem(
+                                iconData: Icons.facebook_outlined,
+                              ),
                             ),
                           ],
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 15, bottom: 10),
-                                child: Text(
-                                  "Cyber Royale",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: Constants.cPadding),
+                              child: Text(
+                                "Cyber Royale",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(Constants.cPadding),
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  children: [
+                                    FollowersItem(
+                                      numberOfFollowers: '7,952',
+                                      nameFollowers: 'Facebook Followers >',
+                                    ),
+                                    VerticalDivider(
+                                      color: Colors.black26,
+                                      thickness: 2,
+                                    ),
+                                    FollowersItem(
+                                      numberOfFollowers: '10',
+                                      nameFollowers: 'instagram Followers >',
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  FollowersItem(
-                                    numberOfFollowers: '7,952',
-                                    nameFollowers: 'Facebook Followers >',
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  FollowersItem(
-                                    numberOfFollowers: '10',
-                                    nameFollowers: 'instagram Followers >',
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              CreatePostButton(),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: Constants.cPadding),
+                              child: CreatePostButton(),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   FacebookItem(
                                     imagePath:
@@ -167,76 +191,73 @@ class _ProfileScreenState extends State<ProfileScreen>
                                   ),
                                 ],
                               ),
-                              Text(
-                                "Shortcuts",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  ShortcutItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
-                                    imageTitle: 'Ads',
-                                  ),
-                                  ShortcutItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
-                                    imageTitle: ' invite\nfriends',
-                                  ),
-                                  ShortcutItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
-                                    imageTitle: 'Comments',
-                                  ),
-                                  ShortcutItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
-                                    imageTitle: 'Trends',
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "To-Do- List",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              SizedBox(height: 10,),
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      ToDoListItem(
-                                        iconData: Icons.camera,
-                                        text: '',
-                                      ),
-                                      Text("2 unread"),
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  ToDoListItem(
-                                    iconData: Icons.camera,
-                                    text: '',
-                                  ),
-                                  SizedBox(height: 9,),
-
-                                ],
-                              )
-                            ],
-                          ),
+                            ),
+                            Divider(
+                              color: Colors.teal[50],
+                              thickness: 8,
+                            ),
+                            Text(
+                              "Shortcuts",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ShortcutItem(
+                                  imagePath: 'assets/images/short.png',
+                                  imageTitle: 'Ads',
+                                ),
+                                ShortcutItem(
+                                  imagePath:
+                                      'assets/images/cyber_royal_logo.png',
+                                  imageTitle: ' invite\nfriends',
+                                ),
+                                ShortcutItem(
+                                  imagePath:
+                                      'assets/images/cyber_royal_logo.png',
+                                  imageTitle: 'Comments',
+                                ),
+                                ShortcutItem(
+                                  imagePath: 'assets/images/img.png',
+                                  imageTitle: 'Trends',
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.teal[50],
+                              thickness: 8,
+                            ),
+                            Text(
+                              "To-Do- List",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Column(
+                              children: [
+                                ToDoListItem(
+                                  iconData: Icons.chat,
+                                  text: '2 read',
+                                ),
+                                ToDoListItem(
+                                  iconData: Icons.check_box,
+                                  text: '',
+                                ),
+                              ],
+                            )
+                          ],
                         )
                       ],
                     ),
-                    const SizedBox(),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                  const SizedBox(),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

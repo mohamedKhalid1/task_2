@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class ShortcutItem extends StatelessWidget {
   const ShortcutItem({
-    super.key, required this.imagePath, required this.imageTitle,
+    super.key,
+    required this.imagePath,
+    required this.imageTitle,
   });
   final String imagePath;
   final String imageTitle;
@@ -11,9 +13,8 @@ class ShortcutItem extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: 40,
-          backgroundImage: AssetImage(
-              imagePath),
+          radius: 25,
+          backgroundImage: AssetImage(imagePath),
         ),
         Text(imageTitle)
       ],
