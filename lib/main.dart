@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         ProfileScreen.route: (context) => const ProfileScreen(),
         SplashScreenAnimated.route: (context) => const SplashScreenAnimated(),
       },
-      initialRoute: ProfileScreen.route,
+      initialRoute: SplashScreenAnimated.route,
     );
   }
 }

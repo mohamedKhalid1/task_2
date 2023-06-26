@@ -4,10 +4,11 @@ class ToDoListItem extends StatelessWidget {
   const ToDoListItem({
     super.key,
     required this.iconData,
-    required this.text,
+    required this.text1, required this.text2,
   });
   final IconData iconData;
-  final String text;
+  final String text1;
+  final String text2;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -18,10 +19,10 @@ class ToDoListItem extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: Icon(iconData),
           )),
-      title: Text("Comments"),
+      title: Text(text1),
       trailing: Text(
-        text,
-        style: TextStyle(fontSize: 16, color: Colors.blueGrey),
+        text2,
+        style: const TextStyle(fontSize: 16, color: Colors.blueGrey),
       ),
     );
   }

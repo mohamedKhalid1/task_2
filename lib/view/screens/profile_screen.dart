@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_2/constants.dart';
-
+import '../../constants/constants.dart';
 import '../widgets/create_post_button.dart';
 import '../widgets/facebook_item.dart';
 import '../widgets/followers_item.dart';
@@ -31,6 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text(
             "Home",
@@ -48,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               child: TabBar(
                 indicatorColor: Colors.black,
                 labelColor: Colors.black,
-                unselectedLabelStyle: TextStyle(
+                unselectedLabelStyle: const TextStyle(
                     color: Colors.grey,
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
@@ -101,39 +101,44 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 ),
                               ),
                             ),
-                            Positioned(
+                            const Positioned(
                               bottom: -30,
                               left: 100,
-                              child: const ProfilePictureItem(
+                              child: ProfilePictureItem(
                                 iconData: Icons.facebook_outlined,
                               ),
                             ),
-                            Positioned(
+                            const Positioned(
                               bottom: -30,
                               left: 10,
-                              child: const ProfilePictureItem(
+                              child: ProfilePictureItem(
                                 iconData: Icons.facebook_outlined,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
                                   horizontal: Constants.cPadding),
-                              child: Text(
-                                "Cyber Royale",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: Constants.cPadding / 2),
+                                child: Text(
+                                  "Cyber Royale",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(Constants.cPadding),
+                            const Padding(
+                              padding: EdgeInsets.all(Constants.cPadding),
                               child: IntrinsicHeight(
                                 child: Row(
                                   children: [
@@ -142,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                                       nameFollowers: 'Facebook Followers >',
                                     ),
                                     VerticalDivider(
-                                      color: Colors.black26,
+                                      color: Colors.black12,
                                       thickness: 2,
                                     ),
                                     FollowersItem(
@@ -153,40 +158,36 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
                                   horizontal: Constants.cPadding),
                               child: CreatePostButton(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   FacebookItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
+                                    imagePath: 'assets/images/ads.png',
                                     imageTitle: 'Reel',
                                   ),
                                   FacebookItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
+                                    imagePath: 'assets/images/ads.png',
                                     imageTitle: 'Story',
                                   ),
                                   FacebookItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
+                                    imagePath: 'assets/images/ads.png',
                                     imageTitle: 'Create ad',
                                   ),
                                   FacebookItem(
-                                    imagePath:
-                                        'assets/images/cyber_royal_logo.png',
+                                    imagePath: 'assets/images/ads.png',
                                     imageTitle: 'Photo',
                                   ),
                                 ],
@@ -196,31 +197,39 @@ class _ProfileScreenState extends State<ProfileScreen>
                               color: Colors.teal[50],
                               thickness: 8,
                             ),
-                            Text(
-                              "Shortcuts",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                  left: Constants.cPadding,
+                                  top: Constants.cPadding,
+                                  bottom: Constants.cPadding),
+                              child: Text(
+                                "Shortcuts",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ),
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 ShortcutItem(
-                                  imagePath: 'assets/images/short.png',
-                                  imageTitle: 'Ads',
+                                  imagePath: 'assets/images/invitation.png',
+                                  imageTitle1: 'Ads',
+                                  imageTitle2: '',
                                 ),
                                 ShortcutItem(
-                                  imagePath:
-                                      'assets/images/cyber_royal_logo.png',
-                                  imageTitle: ' invite\nfriends',
+                                  imagePath: 'assets/images/invitation.png',
+                                  imageTitle1: 'invite',
+                                  imageTitle2: 'friends',
                                 ),
                                 ShortcutItem(
-                                  imagePath:
-                                      'assets/images/cyber_royal_logo.png',
-                                  imageTitle: 'Comments',
+                                  imagePath: 'assets/images/invitation.png',
+                                  imageTitle1: 'Comments',
+                                  imageTitle2: '',
                                 ),
                                 ShortcutItem(
-                                  imagePath: 'assets/images/img.png',
-                                  imageTitle: 'Trends',
+                                  imagePath: 'assets/images/invitation.png',
+                                  imageTitle1: 'Trends',
+                                  imageTitle2: '',
                                 ),
                               ],
                             ),
@@ -228,23 +237,29 @@ class _ProfileScreenState extends State<ProfileScreen>
                               color: Colors.teal[50],
                               thickness: 8,
                             ),
-                            Text(
-                              "To-Do- List",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            const Padding(
+                              padding:
+                                  EdgeInsets.only(left: Constants.cPadding),
+                              child: Text(
+                                "To-Do- List",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 ToDoListItem(
                                   iconData: Icons.chat,
-                                  text: '2 read',
+                                  text1: 'Comments',
+                                  text2: '2 unread',
                                 ),
                                 ToDoListItem(
                                   iconData: Icons.check_box,
-                                  text: '',
+                                  text1: 'Tasks',
+                                  text2: '',
                                 ),
                               ],
                             )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_2/view/screens/pageView_screens/pageView_1.dart';
+import 'package:task_2/view/screens/profile_screen.dart';
 
 import '../../widgets/pageView/pageView_body.dart';
 
@@ -17,7 +18,7 @@ class PageView4 extends StatelessWidget {
             "Lorem ipsum dolor sit amet, consetetur\nsadipscing elitr, sed diam nonumy",
         color4: Colors.green,
         function: () {
-          Navigator.of(context).pushNamed(PageView1.route);
+          Navigator.of(context).pushNamed(ProfileScreen.route);
         },
       ),
     );

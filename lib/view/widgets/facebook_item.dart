@@ -14,7 +14,7 @@ class FacebookItem extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Image.asset(imagePath, height: 50),
+          Image.asset(imagePath, height: 30),
           Text(imageTitle),
         ],
       ),

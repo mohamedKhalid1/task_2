@@ -7,12 +7,11 @@ import 'package:task_2/view/screens/home_screen.dart';
 class SplashScreenAnimated extends StatelessWidget {
   const SplashScreenAnimated({super.key});
 
-  static const String route="SplashScreenAnimated";
+  static const String route = "SplashScreenAnimated";
 
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-
         splashIconSize: 300,
         backgroundColor: Colors.white,
         pageTransitionType: PageTransitionType.topToBottom,
@@ -20,16 +19,19 @@ class SplashScreenAnimated extends StatelessWidget {
         splash: Column(
           children: [
             const CircleAvatar(
-              radius: 90,
+              radius: 120,
               backgroundImage: AssetImage("assets/images/cyber_royal_logo.png"),
             ),
-      TypewriterAnimatedTextKit(
-        repeatForever: true,
-        text: const [
-          "Cyber Royal",
-        ], textStyle: TextStyle(color:Colors.black ),
-
-      ),
+            TypewriterAnimatedTextKit(
+              repeatForever: true,
+              text: const [
+                "Cyber Royale",
+              ],
+              textStyle: const TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
           ],
         ),
         nextScreen: const HomeScreen(),
